@@ -86,9 +86,9 @@ def dataFetch(movie):
 
                 
                 
-root = "/run/user/1000/gvfs/smb-share:server=studio,share=completed"
+root = "D:\\Utorrent\Completed\\"
 
-tstFile = "/run/user/1000/gvfs/smb-share:server=studio,share=completed/The Thin Blue Line (1988) [1080p]/The.Thin.Blue.Line.1988.1080p.BluRay.x264.YIFY.mp4"
+tstFile = "D:\\Utorrent\Completed\\The Thin Blue Line (1988) [1080p]\\The.Thin.Blue.Line.1988.1080p.BluRay.x264.YIFY.mp4"
 
 def getDownLoaded(movie):
     
@@ -135,5 +135,3 @@ def Main(movie):
 
 if __name__=="__main__":
     Main(tstFile)
-
-
