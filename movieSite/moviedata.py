@@ -78,7 +78,7 @@ def dataFetch(movie):
             return 
         else:
             _moviedata = [submovie.get('data', "None")[0].get("MovieName", "None"), submovie.get('data', "None")[0].get("MovieYear", "None"), submovie.get('data', "None")[0].get("IDMovieImdb", "None")]
- #           print _moviedata    
+            #print _moviedata    
             return _moviedata
     except:
         
@@ -97,14 +97,14 @@ def getDownLoaded(movie):
 
 def setid(idnum):
     if len(idnum) == 5:
-       fnlid = "tt00"+idnum
-       return fnlid 
+        fnlid = "tt00"+idnum
+        return fnlid 
     elif len(idnum) == 6:
         fnlid = "tt0"+idnum
         return fnlid
     else:
-         fnlid = "tt"+idnum
-         return fnlid
+        fnlid = "tt"+idnum
+        return fnlid
 
 def getImdbRating(id):
 
@@ -124,12 +124,14 @@ def subsExist(movie):
     
 
 def Main(movie):
+    
     data = dataFetch(movie)
     subsExist(movie)
-    _moviedata = [data[0]] + [data[1]] + [getImdbRating(setid(data[2]))] + [subsExist(movie)] + [getDownLoaded(movie)]
+    
+    _moviedata = [data[0]] + [data[1]] + [getImdbRating(setid(data[2]))] + [subsExist(movie)] + ["N"] + [getDownLoaded(movie)]
     #print _moviedata
     #print server.LogOut(token)
-     
+    
     return _moviedata
     server.LogOut(token)
 
