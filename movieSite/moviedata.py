@@ -25,9 +25,11 @@ print login_info
 token = login_info.values()[2]
 #log = open('D:\\log.txt', 'w')
 
+
+
+vidType = ""
+
 #hash method OpenSubtitles
-
-
 def hashFile(name): 
 
       try: 
@@ -66,7 +68,6 @@ def hashFile(name):
 
     
 #method for fetching movie data
-
 def dataFetch(movie):
     try:
         movie_size = os.path.getsize(movie)
@@ -115,9 +116,21 @@ def getImdbRating(id):
     dbdict = ast.literal_eval(response)
     rating = dbdict.get("imdbRating", "None")
     return rating
+
+def getImdbType(id):
+
+    url = "http://www.omdbapi.com/?i=" + id
+    #print url
+    req = urllib2.Request(url)
+    response = urllib2.urlopen(req).read()
+    dbdict = ast.literal_eval(response)
+    vidType = str(dbdict.get("Type", "None"))
+    return vidType
     
+
+   
 def subsExist(movie):
-    if os.path.exists(os.path.splitext(movie)[0] + ".srt"):
+    if os.path.exists(os.path.splitext(movie)[0] + ".srt") or os.path.exists(os.path.splitext(movie)[0] + ".en.srt"):
         return "Y"
     else:
         return "N"
@@ -128,12 +141,16 @@ def Main(movie):
     data = dataFetch(movie)
     subsExist(movie)
     
-    _moviedata = [data[0]] + [data[1]] + [getImdbRating(setid(data[2]))] + [subsExist(movie)] + ["N"] + [getDownLoaded(movie)]
+    if getImdbType(setid(data[2])) == "movie":
+        _moviedata = [data[0]] + [data[1]] + [getImdbRating(setid(data[2]))] + [subsExist(movie)] + ["N"] + [getDownLoaded(movie)]
+    else:
+        _moviedata = ["X"]
+    
     #print _moviedata
     #print server.LogOut(token)
-    
     return _moviedata
     server.LogOut(token)
 
+    
 if __name__=="__main__":
     Main(tstFile)
