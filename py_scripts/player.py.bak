@@ -1,0 +1,18 @@
+#########################
+# 06/2016				#
+#						#
+# @author: Amir Waisman #
+#########################
+
+#!/usr/bin/python
+
+import urllib2
+import json
+import os
+import shutil
+
+opener = urllib2.build_opener()
+data = json.load(opener.open('http://vintagemonster.onefootball.com/api/player/en/36.json'))
+
+print data
+
