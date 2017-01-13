@@ -1,0 +1,14 @@
+# Tools:
+
+AMPPS : MySQL, Apache, Python...Bundle package
+
+Wordpress: Website creation tool
+
+WooCommerce: Ecommerce plugin for Wordpress
+
+MySQL Workbench: MySQL GUI
+
+WooCommerce Python wrapper - To allow us make python WooCommerce API calls.
+
+
+Muller - 030-42829522 - Atax

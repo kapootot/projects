@@ -33,10 +33,7 @@ def scan(rootdir):
                     
             except:
                 print "Problem adding '%s'" % (file)
-                        
-    
-    
-    
+
    
 def concat(finalInput):
     conn = MySQLdb.connect("localhost","root","q1q2q3","movies")
