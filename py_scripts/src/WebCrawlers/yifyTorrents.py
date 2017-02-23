@@ -34,4 +34,4 @@ def crawl_pages(max_page):
             print title, "|", year, "|", "IMDB Score: " + all_ratings[i].string.split(" / 10")[0], "|", "RT Scores:", rtScores
             print div_tags[i].contents[1].get('href'), "\n"
 
-crawl_pages(2)
+crawl_pages(3)

@@ -3,6 +3,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
+import time
 
 print('\n')
 
@@ -11,13 +12,24 @@ domain = "http://www.songkick.com/"
 suffix = "&page="
 suffix2 = "&utf8=%E2%9C%93#date-filter-form"
 
+
 def set_dates():
     global min_month, min_day, min_year, max_month, max_day, max_year, domain, suffix, suffix2, base, min_date_str, max_date_str
 
+    todayDate = time.strftime("%m/%d/%Y")
+    endOfYear = "12/31/"+time.strftime("%Y")
+
     base = "http://www.songkick.com/metro_areas/28443-germany-berlin?filters%5B"
 
-    min_date = raw_input("Start date? (mm/dd/yyyy)")
-    max_date = raw_input("End date? (mm/dd/yyyy)")
+    min_date = raw_input("Start date? (mm/dd/yyyy) - 'Enter' for today  ")
+
+    if min_date is None:
+        min_date = todayDate
+
+    max_date = raw_input("End date? (mm/dd/yyyy) -  - 'Enter' for end of the current year  ")
+
+    if max_date is None:
+        max_date = endOfYear
 
     min_month = min_date[:2]
     min_day = min_date[3:5]
